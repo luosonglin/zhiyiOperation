@@ -32,7 +32,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("知医技术部——微服务架构——运营系统在线测试")
+                .title("知医技术部——微服务架构（运营系统在线测试）")
                 .description("Spring Boot整合Swagger2构建RESTful APIs")
                 .termsOfServiceUrl("http://weibo.com/iluosonglin")
                 .contact("luosonglin")
