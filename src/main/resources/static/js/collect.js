@@ -283,7 +283,7 @@ function initComment(comments,collectId){
 		var item ='<div class=\"media bb p\"><small class=\"pull-right text-muted\">'+comments[i].commentTime+'</small>';
 		item=item+'<div class=\"pull-left\"><img class=\"media-object img-circle thumb32\" src=\"'+comments[i].profilePicture+ '\" /></div> ';
 		item=item+'<div class=\"media-body\">  <span class=\"media-heading\">  <p class=\"m0\"> '
-		item=item+"<a href=\"javascript:void(0);\" onclick=\"locationUrl('/user/" + comments[i].userId + "/0')\">"+comments[i].userName+"</a>";
+		item=item+"<a href=\"javascript:void(0);\" onclick=\"locationUrl(mamanagerr" + comments[i].userId + ")\">"+comments[i].userName+"</a>";
 		item=item+'</p> <p class=\"m0 text-muted\">';
 		if(!isEmpty(comments[i].replyUserName)){
 			item=item+'回复@'+comments[i].replyUserName+':'+comments[i].content+'<small>';
@@ -493,7 +493,7 @@ function listStandardCollect(collects,listId,user){
 		}
 		var item =
 		"<li>"+
-		"<a style=\"background-image:url("+(collects[i].profilePicture=='' ? 'img/favicon.png' : collects[i].profilePicture )+")\" class=\"hidden-xs timeline-badge sharing-user-avatar\" href=\"javascript:void(0);\" onclick=\"locationUrl(\'/user/"+collects[i].userId+"/0\',\'\');\" ></a>"+
+		"<a style=\"background-image:url("+(collects[i].profilePicture=='' ? 'img/favicon.png' : collects[i].profilePicture )+")\" class=\"hidden-xs timeline-badge sharing-usemanageratar\" href=\"javascript:void(0);\" onclick=\"locationUrl(managemanagerollects[i].userId+",\'\');\" ></a>"+
 		"<div class=\"timeline-panel\">"+
 		"   <div class=\"popover right\">"+
 		"      <div class=\"arrow\"></div>"+
@@ -543,7 +543,7 @@ function listStandardCollect(collects,listId,user){
 		"                  </ul>"+
 		"               </div>"+
 		"               <div class=\"m0\">"+
-		"                  <a onclick=\"locationUrl(\'/user/"+collects[i].userId+"/0\',\'\');\" class=\"text-muted\" href=\"javascript:void(0);\">"+collects[i].userName+"</a>"+
+		"                  <a onclick=\"locationUrl(manager"+comanagerts[i].userId+",\'\');\" class=\"text-muted\" href=\"javascript:void(0);\">"+collects[i].userName+"</a>"+
 		"                  ";
 		if($("#userId").val() == collects[i].userId){
 			item=item+" <a onclick=\"changePrivacy("+collects[i].id+",\'PRIVATE\');\" style=\"display:"+(collects[i].type=='PRIVATE' ? 'none' : 'inline-block')+"\" id=\"private"+collects[i].id+"\" href=\"javascript:void(0);\" title=\"设为私密\" class=\"deco-none\">"+

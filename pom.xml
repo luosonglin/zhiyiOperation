@@ -59,6 +59,12 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!-- 热部署 -->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>springloaded</artifactId>-->
+		<!--</dependency>-->
+
 		<!--swagger2-->
 		<dependency>
 			<groupId>io.springfox</groupId>

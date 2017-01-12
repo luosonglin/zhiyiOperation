@@ -1,4 +1,4 @@
-package com.medmeeting.base.util;
+package com.medmeeting.base.utils;
 
 import java.util.Random;
 

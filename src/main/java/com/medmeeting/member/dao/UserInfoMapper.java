@@ -22,13 +22,13 @@ public interface UserInfoMapper {
 //    int insert(@Param("name") String name, @Param("age") Integer age);
 //
 //    @Insert("INSERT INTO user_info(name, age) VALUES(#{name}, #{age})")
-//    int insertByUser(User user);
+//    int insertByUser(User manager);
 //
 //    @Insert("INSERT INTO user_info(name, age) VALUES(#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})")
 //    int insertByMap(Map<String, Object> map);
 //
 //    @Update("UPDATE user_info SET age=#{age} WHERE name=#{name}")
-//    void update(User user);
+//    void update(User manager);
 //
 //    @Delete("DELETE FROM user_info WHERE id =#{id}")
 //    void delete(Long id);

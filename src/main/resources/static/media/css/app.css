@@ -33,7 +33,7 @@
   4.3  panels
   4.4  progress-extra
   4.5  radial-bar / .radial-bar
-  4.6  user-block / .user-block
+  4.6  manager-block / .manager-block
   4.7  circles / .circle
   4.8  timeline / .timeline
   4.9  dropdown-extra
@@ -3347,7 +3347,7 @@ x:-o-prefocus,
     background-clip: content-box;
 }
 /* ========================================================================
-   Component: user-block.less
+   Component: manager-block.less
  ========================================================================== */
 .has-user-block
 {

@@ -333,8 +333,8 @@
 
         var $target = $(e.target);
         if( ! $target.parents('.aside').length && // if not child of sidebar
-            ! $target.is('#user-block-toggle') && // user block toggle anchor
-            ! $target.parent().is('#user-block-toggle') // user block toggle icon
+            ! $target.is('#manager-block-toggle') && // manager block toggle anchor
+            ! $target.parent().is('#manager-block-toggle') // manager block toggle icon
           ) {
                 $body.removeClass('aside-toggled');          
         }

@@ -22,7 +22,7 @@ function loadConfig(){
 		async: true,
 		type: 'POST',
 		dataType: 'json',
-		url: '/user/getConfig',
+		url: '/manager/getConfig',
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log(XMLHttpRequest);
 			console.log(textStatus);
@@ -76,7 +76,7 @@ function loadFollows(){
 		async: false,
 		type: 'POST',
 		dataType: 'json',
-		url: '/user/getFollows',
+		url: '/manager/getFollows',
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log(XMLHttpRequest);
 			console.log(textStatus);
@@ -147,7 +147,7 @@ function initUserFavorites(favorites){
 			continue;
 		}
 		var favorieshtml = "<div name=\"userFavDiv\" class=\"list-group\">";
-		favorieshtml = favorieshtml + "<a id=\"user"+favorites[i].id+"\" href=\"javascript:void(0);\" class=\"media p mt0 list-group-item\" onclick=\"userLocationUrl('/usercontent/"+$("#userId").val()+"/"+favorites[i].id+"','user"+favorites[i].id+"');\">";
+		favorieshtml = favorieshtml + "<a id=\"manager"+favorites[i].id+"\" href=\"javascript:void(0);\" class=\"media p mt0 list-group-item\" onclick=\"userLocationUrl('/usercontent/"+$("#userId").val()+"/"+favorites[i].id+"',mmanager"+favorites[i].id+"er);\">";
 		favorieshtml = favorieshtml + "<span class=\"media-body\">";
 		favorieshtml = favorieshtml + "<span class=\"media-heading\">";
 		favorieshtml = favorieshtml + " <strong>"+favorites[i].name+"</strong>";
@@ -348,7 +348,7 @@ function updatePwd() {
 	if(!ok){
 		return;
 	}
-	var url = '/user/updatePassword';
+	var url = 'managerr/updatePassword';
 	$.ajax({
 		async: false,
 		url : url,
@@ -379,7 +379,7 @@ function updateIntroduction() {
 	if(!ok){
 		return;
 	}
-	var url = '/user/updateIntroduction';
+	var url = 'managerr/updateIntroduction';
 	$.ajax({
 		async: false,
 		url : url,
@@ -412,7 +412,7 @@ function updateNickname() {
 	if(!ok){
 		return;
 	}
-	var url = '/user/updateUserName';
+	var url = 'managerr/updateUserName';
 	$.ajax({
 		async: false,
 		url : url,
