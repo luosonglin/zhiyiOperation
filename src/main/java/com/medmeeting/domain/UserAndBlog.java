@@ -162,6 +162,7 @@ public class UserAndBlog {
     }
 
     public void setBlogImages(List<String> blogImages) {
-        this.blogImages = Arrays.asList(images.split(";"));
+//        this.blogImages = Arrays.asList(this.images.split(";"));
+        this.blogImages = blogImages;
     }
 }

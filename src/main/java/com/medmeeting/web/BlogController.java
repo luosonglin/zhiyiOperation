@@ -1,12 +1,15 @@
 package com.medmeeting.web;
 
 import com.medmeeting.domain.UserAndBlog;
+import com.medmeeting.domain.UserInfo;
 import com.medmeeting.repository.BlogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,10 +35,13 @@ public class BlogController {
 //        model.addAttribute("followList",followList);
 
         List<UserAndBlog> blog = blogMapper.findAllBlog();
-        model.addAttribute("blog",blog);
+        for (UserAndBlog aBlog : blog) {
+            if (aBlog.getImages() == null)
+                continue;
+            aBlog.setBlogImages(Arrays.asList(aBlog.getImages().split(";")));
+        }
 
-        System.out.println(blog.get(0).getName());
-//        System.out.print(blog.get(0).getBlogImages().get(0));
+        model.addAttribute("blog",blog);
 
 //        model.addAttribute("newAtMeCount",noticeRepository.countByUserIdAndTypeAndReaded(getUserId(), "at", "unread"));
 //        model.addAttribute("newCommentMeCount",noticeRepository.countByUserIdAndTypeAndReaded(getUserId(), "comment", "unread"));

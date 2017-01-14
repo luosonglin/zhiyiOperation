@@ -33,7 +33,11 @@
             <td>
                 <table><!--th:if="${not #lists.isEmpty(${blog.blogImages})}}"-->
                     <tr th:each="images, imageStatus:${blog.blogImages}"><!--th:each="images:${blog.blogImages}"-->
-                        <td><img alt="" class="img-thumbnail" th:src="${images == null?'img/logo.png':images}"/>-->haha</td>
+                        <td>
+                            <a href="#" class="thumbnail">
+                                <img style="width:30px;height：30px" alt="" class="img-thumbnail" th:src="${images == null?'img/logo.png':images}"/>
+                            </a>
+                        </td>
                     </tr>
                 </table>
             </td>
