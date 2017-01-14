@@ -1,10 +1,9 @@
 package com.medmeeting.member.dao;
 
-import com.medmeeting.member.entity.UserInfo;
+import com.medmeeting.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by luosonglin on 29/12/2016.
@@ -34,8 +33,8 @@ public interface UserInfoMapper {
 //    void delete(Long id);
 
     //所有普通用户
-    @Select("select name, nick_name, mobile_phone, company, department, postion, hospital, sex, birthday, title, address, country," +
-            "province, city, county, zip_code, id_code, status, phone, user_pic, authen_status, medical from user_info")
+    @Select("select id, name, nick_name, email, mobile_phone, company, department, postion, hospital, state_date, sex, birthday, title, address, country," +
+            "province, city, county, zip_code, id_code, status, phone, user_pic, authen_status, medical from user_info order by id asc")
     List<UserInfo> getUserInfo();
 
     //注册用户数量

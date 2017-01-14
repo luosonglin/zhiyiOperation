@@ -2,25 +2,35 @@ package com.medmeeting.manager;
 
 import com.medmeeting.base.entity.ExceptionMsg;
 import com.medmeeting.base.entity.ResponseData;
+import com.medmeeting.base.utils.FileUtil;
 import com.medmeeting.comm.Const;
 import com.medmeeting.web.BaseController;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-
+import sun.misc.BASE64Decoder;
 import javax.servlet.http.Cookie;
+import java.util.UUID;
 
 /**
  * Created by luosonglin on 10/01/2017.
  */
 @RestController
 @RequestMapping("/user")
-public class TestController extends BaseController {
+public class ManagerController extends BaseController {
+
+    @Value("${static.url}")
+    private String staticUrl;
+    @Value("${file.profilepictures.url}")
+    private String fileProfilepicturesUrl;
+
+
     @Autowired
     private ManagerMapper managerMapper;
 
@@ -55,7 +65,40 @@ public class TestController extends BaseController {
         } catch (Exception e) {
             return new ResponseData(ExceptionMsg.FAILED);
         }
-
-
     }
+
+    /**
+     * 上传头像
+     * @param file
+     * @return
+     */
+    @RequestMapping(value = "/uploadHeadPortrait", method = RequestMethod.POST)
+    public ResponseData uploadHeadPortrait(String dataUrl){
+        logger.info("执行 上传头像 开始");
+        try {
+            String filePath=staticUrl+fileProfilepicturesUrl;
+            String fileName= UUID.randomUUID().toString()+".png";
+            String savePath = fileProfilepicturesUrl+fileName;
+            String image = dataUrl;
+            String header ="data:image";
+            String[] imageArr=image.split(",");
+            if(imageArr[0].contains(header)){
+                image=imageArr[1];
+                BASE64Decoder decoder = new BASE64Decoder();
+                byte[] decodedBytes = decoder.decodeBuffer(image);
+                FileUtil.uploadFile(decodedBytes, filePath, fileName);
+                User user = getUser();
+                managerMapper.setProfilePicture(savePath, user.getId());
+                user.setUserPic(savePath);
+                getSession().setAttribute(Const.LOGIN_SESSION_KEY, user);
+            }
+            logger.info("头像地址：" + savePath);
+            logger.info("执行 上传头像 结束");
+            return new ResponseData(ExceptionMsg.SUCCESS, savePath);
+        } catch (Exception e) {
+            logger.error("upload head portrait failed, ", e);
+            return new ResponseData(ExceptionMsg.FAILED);
+        }
+    }
+
 }

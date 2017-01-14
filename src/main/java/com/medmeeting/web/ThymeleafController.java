@@ -71,6 +71,11 @@ public class ThymeleafController extends BaseController {
 //        return "index";
     }
 
+    @RequestMapping(value="/uploadHeadPortrait")
+    public String uploadHeadPortrait(){
+        return "user/uploadheadportrait";
+    }
+
     @RequestMapping(value="/tool")
 //    @LoggerManage(description="工具页面")
     public String tool(Model model) {
@@ -80,6 +85,24 @@ public class ThymeleafController extends BaseController {
         model.addAttribute("path",path);
         return "tool";
     }
+
+    @RequestMapping(value="/newFavorites")
+//    @LoggerManage(description="新建收藏夹页面")
+    public String newFavorites(){
+        return "favorites/newfavorites";
+    }
+
+    @RequestMapping(value = "/404")
+    public String haha404() {
+        return "404";
+    }
+
+    @RequestMapping(value="/mobile")
+//    @LoggerManage(description="移动客户端页面")
+    public String mobile() {
+        return "mobile";
+    }
+
 
 
 }

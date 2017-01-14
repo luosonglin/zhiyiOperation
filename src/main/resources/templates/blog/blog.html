@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>微博</h3>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名(或昵称)</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>发布时间</th>
+            <th>评论数</th>
+            <th>点赞数</th>
+            <th>是否热门</th>
+            <th>图片</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr th:each="blog:${blog}">
+            <td class="text-center" th:text="${blog.id}"></td>
+            <td th:text="${blog.name == null ? blog.nickName:blog.name}"></td>
+            <td th:text="${blog.title}" style="word-break: break-all"></td>
+            <td th:text="${blog.content}" style="word-break: break-all"></td>
+            <!--时间格式化-->
+            <td th:text="${#calendars.format(blog.createdAt,'yyyy/MM/dd HH:mm')}" style="white-space: nowrap"></td>
+            <td th:text="${blog.commentCount}"></td>
+            <td th:text="${blog.likeCount}"></td>
+            <td th:text="${blog.isHot}"></td>
+            <td>
+                <table><!--th:if="${not #lists.isEmpty(${blog.blogImages})}}"-->
+                    <tr th:each="images, imageStatus:${blog.blogImages}"><!--th:each="images:${blog.blogImages}"-->
+                        <td><img alt="" class="img-thumbnail" th:src="${images == null?'img/logo.png':images}"/>-->haha</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</section>
+</body>
+<script type='text/javascript'>
+</script>
+</html>

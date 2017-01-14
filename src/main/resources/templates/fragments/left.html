@@ -10,13 +10,13 @@
                      <div class="item user-block">
                         <div class="user-block-picture">
                            <div class="user-block-status">
-                              <a href="javascript:void(0);" th:onclick="'locationUrl(\'/user/'+${user.id}+'/0\',\'\');'">
+                              <a href="javascript:void(0);" th:onclick="'locationUrl(\'/user/'+${user.id}+'/0\',\'\');'"><!--locationUrl(\'/404\',\'\');-->
                                  <img alt="" class="img-thumbnail img-circle"  th:src="${user.userPic == null?'img/favicon.png':user.userPic}" id="leftProfilePicture" width="240px" height="240px"/></a>
                               <div class="circle circle-success circle-lg"></div>
                            </div>
                         </div>
                         <div class="user-block-info">
-                           <div class="user-block-name" th:text="' '+${user.name}" id="leftUserName">欢迎 欢迎</div>
+                           <div class="user-block-name" th:text="' '+${user.nickName}" id="leftUserName">欢迎 欢迎</div>
                            <div class="user-block-role" th:text="${user.title == null ? '暂无简介' : user.title.length() gt 10 ? user.title.substring(0,10)+'...' : user.title}" id="leftIntroduction">暂无简介</div>
                         </div>
                      </div>
@@ -32,19 +32,74 @@
                <li class=" " id="unread">
                </li>
                <li class=" " >
-                  <a data-toggle="collapse" title="收藏夹" href="#favorites">
+                  <a data-toggle="collapse" title="用户" href="#favorites">
                      <em class="icon-folder"></em>
-                     <span>收藏夹</span>
+                     <span>用户管理</span>
                   </a>
                   <ul class="nav sidebar-subnav collapse" id="favorites">
-                     <li class="sidebar-subnav-header">收藏夹</li>
+                     <li class="sidebar-subnav-header">用户管理</li>
                      <li id="newFavortes" class=" ">
-                        <a title="+ 新建收藏夹" href="javascript:void(0);" onclick="locationUrl('/newFavorites','newFavortes')">
-                           <span>+ 新建收藏夹</span>
+                        <a title="+ 新建" href="javascript:void(0);" onclick="locationUrl('/user2/list')">
+                           <span>—  普通用户</span>
+                        </a>
+                     </li>
+                     <li id="newFavortes" class=" ">
+                        <a title="+ 新建" href="javascript:void(0);" onclick="locationUrl('/tool','tool')">
+                           <span>—  待认证用户</span>
+                        </a>
+                     </li>
+                     <li id="newFavortes" class=" ">
+                        <a title="+ 新建" href="javascript:void(0);" onclick="locationUrl('/mobile','mobile')">
+                           <span>—  认证用户</span>
+                        </a>
+                     </li>
+                     <li id="newFavortes" class=" ">
+                        <a title="+ 新建" href="javascript:void(0);" onclick="locationUrl('/newFavorites','newFavortes')">
+                           <span>—  大咖用户</span>
                         </a>
                      </li>
                   </ul>
                </li>
+               <li class=" " >
+                  <a data-toggle="collapse" title="收藏夹" href="#weibo">
+                     <em class="icon-folder"></em>
+                     <span>微博管理</span>
+                  </a>
+                  <ul class="nav sidebar-subnav collapse" id="weibo">
+                     <li class="sidebar-subnav-header">微博管理</li>
+
+                     <li id="weibo" class=" ">
+                        <a title="" href="javascript:void(0);" onclick="locationUrl('/blog/list')">
+                           <span>—  所有微博</span>
+                        </a>
+                     </li>
+                     <li id="newWeibos" class=" ">
+                        <a title="" href="javascript:void(0);" onclick="locationUrl('/blog/list')">
+                           <span>—  推荐微博</span>
+                        </a>
+                     </li>
+                     <li id="newWeibos" class=" ">
+                        <a title="" href="javascript:void(0);" onclick="locationUrl('/blog/list')">
+                           <span>—  大咖说</span>
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+            <li class=" " >
+               <a data-toggle="collapse" title="收藏夹" href="#favorites1">
+                  <em class="icon-folder"></em>
+                  <span>病例管理</span>
+               </a>
+               <ul class="nav sidebar-subnav collapse" id="favorites1">
+                  <li class="sidebar-subnav-header">微博管理</li>
+                  <li id="newFavortes" class=" ">
+                     <a title="+ 新建" href="javascript:void(0);" onclick="locationUrl('/newFavorites','newFavortes')">
+                        <span>+ 新建</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+
                <li class=" " id="explore" >
                   <a title="发现" href="javascript:void(0);"  onclick="locationUrl('/standard/explore/0','explore')">
                      <em class="icon-compass"></em>
