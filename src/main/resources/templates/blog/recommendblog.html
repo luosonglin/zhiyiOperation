@@ -6,10 +6,10 @@
 <body>
 <section>
     <div class="content-wrapper">
-        <h3>微博</h3>
+        <h3>推荐</h3>
     </div>
     <table class="table table-bordered table-hover">
-      <thead>
+        <thead>
         <tr>
             <th>序号</th>
             <th>用户名(或昵称)</th>
@@ -22,9 +22,9 @@
             <th>点赞数</th>
             <th>是否热门</th>
         </tr>
-       </thead>
-       <tbody>
-        <tr th:each="blog:${blog}">
+        </thead>
+        <tbody>
+        <tr th:each="blog:${recommendBlog}">
             <td class="text-center" th:text="${blog.id}"></td>
             <td th:text="${blog.name == null ? blog.nickName:blog.name}"></td>
             <td th:text="${blog.title}" style="word-break: break-all"></td>
@@ -61,7 +61,7 @@
             <td th:text="${blog.isHot == 1? '是':'否'}"></td>
 
         </tr>
-      </tbody>
+        </tbody>
     </table>
 
 

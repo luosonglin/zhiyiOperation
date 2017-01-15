@@ -23,16 +23,8 @@ public class BlogController {
     BlogMapper blogMapper;
 
     @RequestMapping(value="/list")
-//    @LoggerManage(description="登陆后首页")
+//    @LoggerManage(description="所有微博")
     public String getBlogList(Model model) {
-//        long size= collectRepository.countByUserIdAndIsDelete(getUserId(),IsDelete.NO);
-//        Config config = configRepository.findByUserId(getUserId());
-//        Favorites favorites = favoritesRepository.findOne(Long.parseLong(config.getDefaultFavorties()));
-//        List<String> followList = followRepository.findByUserId(getUserId());
-//        model.addAttribute("config",config);
-//        model.addAttribute("favorites",favorites);
-//        model.addAttribute("size",size);
-//        model.addAttribute("followList",followList);
 
         List<UserAndBlog> blog = blogMapper.findAllBlog();
         for (UserAndBlog aBlog : blog) {
@@ -43,11 +35,39 @@ public class BlogController {
 
         model.addAttribute("blog",blog);
 
-//        model.addAttribute("newAtMeCount",noticeRepository.countByUserIdAndTypeAndReaded(getUserId(), "at", "unread"));
-//        model.addAttribute("newCommentMeCount",noticeRepository.countByUserIdAndTypeAndReaded(getUserId(), "comment", "unread"));
-//        model.addAttribute("newPraiseMeCount",noticeRepository.countPraiseByUserIdAndReaded(getUserId(), "unread"));
-//        logger.info("collect size="+size+" userID="+getUserId());
         return "blog/blog";
+    }
+
+    @RequestMapping(value="/list/recommend")
+//    @LoggerManage(description="推荐微博")
+    public String getRecommengBlogList(Model model) {
+
+        List<UserAndBlog> blog = blogMapper.getRecommendBlog();
+        for (UserAndBlog aBlog : blog) {
+            if (aBlog.getImages() == null)
+                continue;
+            aBlog.setBlogImages(Arrays.asList(aBlog.getImages().split(";")));
+        }
+
+        model.addAttribute("recommendBlog",blog);
+
+        return "blog/recommendblog";
+    }
+
+    @RequestMapping(value="/list/vip")
+//    @LoggerManage(description="大咖说微博")
+    public String getVipBlogList(Model model) {
+
+        List<UserAndBlog> blog = blogMapper.getVipBlog();
+        for (UserAndBlog aBlog : blog) {
+            if (aBlog.getImages() == null)
+                continue;
+            aBlog.setBlogImages(Arrays.asList(aBlog.getImages().split(";")));
+        }
+
+        model.addAttribute("vipBlog",blog);
+
+        return "blog/vipblog";
     }
 
     @RequestMapping(value="/mobile")
