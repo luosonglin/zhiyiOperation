@@ -33,8 +33,7 @@ public interface UserInfoMapper {
 //    void delete(Long id);
 
     //所有普通用户
-    @Select("select id, name, nick_name, email, mobile_phone, company, department, postion, hospital, state_date, sex, birthday, title, address, country," +
-            "province, city, county, zip_code, id_code, status, phone, user_pic, authen_status, medical from user_info order by id asc")
+    @Select("select id, name, nick_name, email, mobile_phone, company, department, postion, hospital, state_date, sex, birthday, title, address, country, province, city, county, zip_code, id_code, status, phone, user_pic, authen_status, medical from user_info order by id asc")
     List<UserInfo> getUserInfo();
 
     //注册用户数量
@@ -42,7 +41,7 @@ public interface UserInfoMapper {
     Integer getUserCount();
 
     //待认证用户
-    @Select("select name, nick_name, mobile_phone, company, department, postion, hospital, sex, birthday, title, address, country,province, city, county, zip_code, id_code, status, phone, user_pic, medical from user_info where authen_status = 'X'")
+    @Select("select id, name, nick_name, mobile_phone, company, department, postion, hospital, state_date, sex, birthday, title, address, country, province, city, county, zip_code, id_code, status, phone, user_pic, medical from user_info where authen_status = 'X' order by id asc")
     List<UserInfo> getWaitAuthenUserInfo();
 
     //待认证用户数量
@@ -50,7 +49,7 @@ public interface UserInfoMapper {
     Integer getWaitAuthenUserCount();
 
     //认证用户
-    @Select("select name, nick_name, mobile_phone, company, department, postion, hospital, sex, birthday, title, address, country,province, city, county, zip_code, id_code, status, phone, user_pic, medical from user_info where authen_status = 'A'")
+    @Select("select id, name, nick_name, mobile_phone, company, department, postion, hospital, state_date, sex, birthday, title, address, country, province, city, county, zip_code, id_code, status, phone, user_pic, medical from user_info where authen_status = 'A' order by id asc")
     List<UserInfo> getAuthenUserInfo();
 
     //认证用户数量

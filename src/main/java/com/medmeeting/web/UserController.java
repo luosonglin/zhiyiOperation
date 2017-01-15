@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping(value="/list")
 //    @LoggerManage(description="登陆后首页")
-    public String getBlogList(Model model) {
+    public String getUserList(Model model) {
 //        long size= collectRepository.countByUserIdAndIsDelete(getUserId(),IsDelete.NO);
 //        Config config = configRepository.findByUserId(getUserId());
 //        Favorites favorites = favoritesRepository.findOne(Long.parseLong(config.getDefaultFavorties()));
@@ -34,6 +34,24 @@ public class UserController {
         model.addAttribute("user",userInfos);
 
         return "user/user";
+    }
+
+    @RequestMapping(value="/list/wait")
+    public String getWaitAuthenUserList(Model model) {
+
+        List<UserInfo> userInfos = userInfoMapper.getWaitAuthenUserInfo();
+        model.addAttribute("waitAuthenUser",userInfos);
+
+        return "user/waitauthenuser";
+    }
+
+    @RequestMapping(value="/list/authen")
+    public String getAuthenUserList(Model model) {
+
+        List<UserInfo> userInfos = userInfoMapper.getAuthenUserInfo();
+        model.addAttribute("authenUser",userInfos);
+
+        return "user/authenuser";
     }
 
     @RequestMapping(value="/mobile")
