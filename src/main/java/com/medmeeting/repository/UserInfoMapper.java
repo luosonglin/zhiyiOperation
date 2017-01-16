@@ -1,4 +1,4 @@
-package com.medmeeting.member.dao;
+package com.medmeeting.repository;
 
 import com.medmeeting.domain.UserInfo;
 import org.apache.ibatis.annotations.*;

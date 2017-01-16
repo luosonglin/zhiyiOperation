@@ -1,7 +1,7 @@
 package com.medmeeting.web;
 
 import com.medmeeting.domain.UserInfo;
-import com.medmeeting.member.dao.UserInfoMapper;
+import com.medmeeting.repository.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

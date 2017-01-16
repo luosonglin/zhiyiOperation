@@ -1,0 +1,183 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head th:include="layout :: htmlhead" th:with="title='favorites'">
+
+
+</head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>已上线活动</h3>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <div class="text-info"><b></b></div>
+        <tr>
+            <th>序号</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>图片</th>
+            <th>发布时间</th>
+            <th>下线时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="activities:${doingActivities}">
+            <td class="text-center" th:text="${activities.id}"></td>
+            <td th:text="${activities.title}" style="word-break: break-all"></td>
+            <td th:text="${activities.content}" style="word-break: break-all"></td>
+            <td>
+                <div class="gallery cf">
+                    <div>
+                        <img style="width:80px;height:160px;" class="img-thumbnail"
+                             th:src="${activities.url == null?'img/logo.jpg':activities.url}"/>
+                    </div>
+                </div>
+            </td>
+            <!--时间格式化-->
+            <td th:text="${activities.createdAt}" style="white-space: nowrap"></td>
+            <td th:text="${activities.deletedAt}" style="white-space: nowrap"></td>
+            <!--<td><button v-on:click="offline" class="btn btn-block btn-primary mt-lg">下线</button></td>-->
+            <td>
+                <!--<div>-->
+                    <!--<a href="#" id="example" class="btn btn-success" rel="popover" data-content="我再考虑考虑！" data-original-title="确定将该活动下线？">下线</a>-->
+                <button  id="example1" rel="popover" data-content="我再考虑考虑！" data-original-title="确定将该活动下线？" class="btn btn-block btn-primary mt-lg">修改</button>
+                <button  id="example" rel="popover" data-content="我再考虑考虑！" data-original-title="确定将该活动下线？" class="btn btn-block btn-primary mt-lg">下线</button>
+                <!--</div>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="aside-inner">
+        <h3></h3>
+    </div>
+
+    <div class="content-wrapper">
+        <h3>已下线活动</h3>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>图片</th>
+            <th>发布时间</th>
+            <th>下线时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="activities:${doneActivities}">
+            <td class="text-center" th:text="${activities.id}"></td>
+            <td th:text="${activities.title}" style="word-break: break-all"></td>
+            <td th:text="${activities.content}" style="word-break: break-all"></td>
+            <td>
+                <div class="gallery cf">
+                    <div>
+                        <img style="width:80px;height:160px;" class="img-thumbnail"
+                             th:src="${activities.url == null?'img/logo.jpg':activities.url}"/>
+                    </div>
+                </div>
+            </td>
+            <!--时间格式化-->
+            <td th:text="${activities.createdAt}" style="white-space: nowrap"></td>
+            <td th:text="${activities.deletedAt}" style="white-space: nowrap"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+<script type='text/javascript'>
+
+</script>
+<style>
+    .gallery {
+        width: 80px;
+        height: 160px;
+        margin: 10px auto;
+        /*padding: 5px;*/
+        /*background: #333;*/
+    }
+
+    .gallery > div {
+        position: relative;
+        float: left;
+        padding: 1px;
+    }
+
+    .gallery > div > img {
+        width: 250px;
+        transition: .1s transform;
+        transform: translateZ(0);
+        /* hack */
+    }
+
+    .gallery > div:hover {
+        z-index: 1;
+    }
+
+    .gallery > div:hover > img {
+        transform: scale(3, 3);
+        transition: .3s transform;
+    }
+
+    .cf:before, .cf:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+
+</style>
+<script>
+    $(function (){
+        $("#example").popover({placement:'left'});
+    });
+</script>
+<script type='text/javascript'>
+    Vue.http.options.emulateJSON = true;
+    var loginPage = new Vue({
+        el: '#loginPage',
+        data: {
+//                'name': '',
+//                'password': ''
+            //测试用
+            'name': 'haha',
+            'password': '123'
+        },
+        methods: {
+            login: function(event){
+
+//                var ok = $('#form').parsley().isValid({force: true});
+//                if(!ok){
+//                    return;
+//                }
+//                var datas={
+//                    name: this.name,
+//                    password: this.password
+//                };
+//                this.$http.post('/user/login2',datas).then(function(response){
+//                    if(response.data.rspCode == '000000'){
+//                        window.open(response.data.data, '_self');
+//                        console.log(this.$router);
+//                    } else {
+//                        $("#errorMsg").html(response.data.rspMsg);
+//                        $("#errorMsg").show(300).delay(3000).hide(300);
+//                    }
+//                }, function(response){
+//                    console.log('error');
+//                })
+//                    window.open("http://localhost:8080/index");
+//                    alert('Hello ' + this.name + '!')
+            }
+        }
+    })
+</script>
+
+</html>

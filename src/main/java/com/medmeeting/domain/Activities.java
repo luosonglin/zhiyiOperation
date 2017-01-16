@@ -1,17 +1,18 @@
-package com.medmeeting.banner.entity;
+package com.medmeeting.domain;
 
 import java.util.Date;
 
 /**
  * Created by luosonglin on 01/12/2016.
  */
-public class Banner {
+public class Activities {
     private Integer id;
     private String url;
     private String title;
     private String content;
     private Date createdAt;
-    private Integer isDisplay;
+    private Integer is_display;
+    private Date deletedAt;
 
     public Integer getId() {
         return id;
@@ -45,6 +46,14 @@ public class Banner {
         this.content = content;
     }
 
+    public Integer getIs_display() {
+        return is_display;
+    }
+
+    public void setIs_display(Integer is_display) {
+        this.is_display = is_display;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -53,11 +62,11 @@ public class Banner {
         this.createdAt = createdAt;
     }
 
-    public Integer getIsDisplay() {
-        return isDisplay;
+    public Date getDeletedAt() {
+        return deletedAt;
     }
 
-    public void setIsDisplay(Integer isDisplay) {
-        this.isDisplay = isDisplay;
+    public void setDeletedAt(Date deletedAt) {
+        this.deletedAt = deletedAt;
     }
 }

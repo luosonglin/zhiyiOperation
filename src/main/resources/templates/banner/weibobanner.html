@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'">
+
+
+</head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>微博Banner</h3>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>图片</th>
+            <th>发布时间</th>
+            <th>下线时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="banner:${weiboBanner}">
+            <td class="text-center" th:text="${banner.id}"></td>
+            <td th:text="${banner.title}" style="word-break: break-all"></td>
+            <td th:text="${banner.content}" style="word-break: break-all"></td>
+            <td>
+                <div class="gallery cf" >
+                    <div>
+                        <img style="width:150px;height:80px;" class="img-thumbnail" th:src="${banner.url == null?'img/logo.jpg':banner.url}"/>
+                    </div>
+                </div>
+            </td>
+            <!--时间格式化-->
+            <td th:text="${banner.createdAt}" style="white-space: nowrap"></td>
+            <td th:text="${banner.deletedAt}" style="white-space: nowrap"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+<script type='text/javascript'>
+
+</script>
+<style>
+    .gallery {
+        width: 150px;
+        height: 80px;
+        margin: 10px auto;
+        /*padding: 5px;*/
+        /*background: #333;*/
+    }
+
+    .gallery > div {
+        position: relative;
+        float: left;
+        padding: 1px;
+    }
+
+    .gallery > div > img {
+        width: 250px;
+        transition: .1s transform;
+        transform: translateZ(0);
+        /* hack */
+    }
+
+    .gallery > div:hover {
+        z-index: 1;
+    }
+
+    .gallery > div:hover > img {
+        transform: scale(3, 3);
+        transition: .3s transform;
+    }
+
+    .cf:before, .cf:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+
+</style>
+
+</html>

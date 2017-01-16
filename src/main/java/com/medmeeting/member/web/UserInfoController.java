@@ -2,7 +2,7 @@ package com.medmeeting.member.web;
 
 import com.medmeeting.base.entity.ResultDate;
 import com.medmeeting.exception.CustomizedException;
-import com.medmeeting.member.dao.UserInfoMapper;
+import com.medmeeting.repository.UserInfoMapper;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

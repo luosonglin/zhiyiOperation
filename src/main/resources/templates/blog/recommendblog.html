@@ -26,7 +26,7 @@
         <tbody>
         <tr th:each="blog:${recommendBlog}">
             <td class="text-center" th:text="${blog.id}"></td>
-            <td th:text="${blog.name == null ? blog.nickName:blog.name}"></td>
+            <td th:text="${blog.name == null ? blog.nickName:blog.name}" style="white-space: nowrap"></td>
             <td th:text="${blog.title}" style="word-break: break-all"></td>
             <td th:text="${blog.content}" style="word-break: break-all"></td>
             <!--<td>-->
