@@ -1,9 +1,11 @@
-package com.medmeeting.manager;
+package com.medmeeting.web;
 
 import com.medmeeting.base.entity.ExceptionMsg;
 import com.medmeeting.base.entity.ResponseData;
 import com.medmeeting.base.utils.FileUtil;
 import com.medmeeting.comm.Const;
+import com.medmeeting.manager.ManagerMapper;
+import com.medmeeting.manager.User;
 import com.medmeeting.web.BaseController;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import java.util.UUID;
 
 /**
  * Created by luosonglin on 10/01/2017.
+ * 运营管理人员
  */
 @RestController
 @RequestMapping("/user")

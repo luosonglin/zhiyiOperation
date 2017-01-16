@@ -15,7 +15,7 @@
                                         <!--locationUrl(\'/404\',\'\');-->
                                         <img alt="" class="img-thumbnail img-circle"
                                              th:src="${user.userPic == null?'img/favicon.png':user.userPic}"
-                                             id="leftProfilePicture" width="240px" height="240px"/></a>
+                                             id="leftProfilePicture"/></a>
                                     <div class="circle circle-success circle-lg"></div>
                                 </div>
                             </div>
@@ -123,12 +123,14 @@
                             </a>
                         </li>
                         <li id="weiboBanners" class=" ">
-                            <a title="+ 微博Banner" href="javascript:void(0);" onclick="locationUrl('/banner/list/weibo')">
+                            <a title="+ 微博Banner" href="javascript:void(0);"
+                               onclick="locationUrl('/banner/list/weibo')">
                                 <span>—  微博Banner</span>
                             </a>
                         </li>
                         <li id="meetingBanners" class=" ">
-                            <a title="+ 会议Banner" href="javascript:void(0);" onclick="locationUrl('/banner/list/meeting')">
+                            <a title="+ 会议Banner" href="javascript:void(0);"
+                               onclick="locationUrl('/banner/list/meeting')">
                                 <span>—  会议Banner</span>
                             </a>
                         </li>
@@ -163,12 +165,12 @@
                         <span>网页收集工具</span>
                     </a>
                 </li>
-                <!--         <li class=" " id="mobile">
-                           <a title="移动客户端" href="javascript:void(0);" onclick="locationUrl('/mobile','mobile')">
-                              <em class="icon-screen-smartphone"></em>
-                              <span>移动客户端</span>
-                           </a>
-                        </li> -->
+                <li class=" " id="mobile">
+                    <a title="移动客户端" href="javascript:void(0);" onclick="locationUrl('/mobile','mobile')">
+                        <em class="icon-screen-smartphone"></em>
+                        <span>移动客户端</span>
+                    </a>
+                </li>
                 <li class=" " id="import">
                     <a title="导入收藏夹" href="javascript:void(0);" onclick="locationUrl('/import','import')">
                         <em class="icon-login"></em>
