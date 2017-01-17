@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
 <body>
 <section>
@@ -19,6 +19,7 @@
             <th>手机号</th>
             <!--<th>注册时间</th>-->
             <th>头像</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -34,11 +35,53 @@
             <td th:text="${user.mobilePhone}" style="white-space: nowrap"></td>
             <!--<td th:text="${user.stateDate}" style="white-space: nowrap"></td>-->
             <td><img alt="" width="100px" height="100px" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/></td>
+            <td>
+                <!--<button id="authen" class="btn btn-block btn-primary mt-lg">认证</button>-->
+                <div class="p-lg text-center">
+                    <a class="btn btn-default btn-block" data-target="#modal-authen-user" data-toggle="modal" href="#">
+                        <strong>认证</strong>
+                    </a>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
 </section>
+
+
 </body>
 <script type='text/javascript'>
+    $(function(){
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000',
+        };
+        $("#").click(function(){
+            var ok = $('#form').parsley().isValid({force: true});
+            if(ok){
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    dataType: 'json',
+                    data:'name=' + $("#name").val(),
+                    url: '/favorites/add',
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    },
+                    success: function(response){
+                        if(response.rspCode == '000000'){
+                            loadFavorites();
+                            toastr.success('收藏夹创建成功！', '操作成功');
+                        }else{
+                            toastr.error(response.rspMsg, '操作失败');
+                        }
+                    }
+                });
+            }
+        });
+    });
 </script>
 </html>

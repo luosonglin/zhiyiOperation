@@ -23,9 +23,9 @@
         </thead>
         <tbody>
         <tr th:each="activities:${doingActivities}">
-            <td class="text-center" th:text="${activities.id}"></td>
-            <td th:text="${activities.title}" style="word-break: break-all"></td>
-            <td th:text="${activities.content}" style="word-break: break-all"></td>
+            <td class="text-center" th:text="${activities.id}" style="vertical-align: middle;text-align: center; word-break: break-all"></td>
+            <td th:text="${activities.title}" style="vertical-align: middle;text-align: center; word-break: break-all"></td>
+            <td th:text="${activities.content}" style="vertical-align: middle;text-align: center; word-break: break-all"></td>
             <td>
                 <div class="gallery cf">
                     <div>
@@ -35,8 +35,8 @@
                 </div>
             </td>
             <!--时间格式化-->
-            <td th:text="${activities.createdAt}" style="white-space: nowrap"></td>
-            <td th:text="${activities.deletedAt}" style="white-space: nowrap"></td>
+            <td th:text="${activities.createdAt}" style="vertical-align: middle;text-align: center; white-space: nowrap"></td>
+            <td th:text="${activities.deletedAt}" style="vertical-align: middle;text-align: center; white-space: nowrap"></td>
             <!--<td><button v-on:click="offline" class="btn btn-block btn-primary mt-lg">下线</button></td>-->
             <td>
                 <!--<div>-->
