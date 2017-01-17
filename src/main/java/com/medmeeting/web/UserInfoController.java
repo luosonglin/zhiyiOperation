@@ -1,4 +1,4 @@
-package com.medmeeting.member.web;
+package com.medmeeting.web;
 
 import com.medmeeting.base.entity.ResultDate;
 import com.medmeeting.exception.CustomizedException;
@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by luosonglin on 25/11/2016.
  */
 @RestController
-@RequestMapping(value = "/${com.medmeeting.project.type}/${com.medmeeting.project.version}/userinfos")
+@RequestMapping(value = "/userinfos")
 // 通过这里配置使下面的映射都在/users下，可去除
 public class UserInfoController {
 
@@ -119,7 +119,7 @@ public class UserInfoController {
     }
 
 
-    @ApiOperation(value="认证医师", notes="")
+/*    @ApiOperation(value="认证医师", notes="")
     @ApiImplicitParam(name = "user_id", value = "用户user_id", required = true, dataType = "int", paramType="path")
     @RequestMapping(value="/{user_id}", method=RequestMethod.PUT)
     public ResultDate authoruzationUser(@PathVariable Integer user_id) {
@@ -136,6 +136,6 @@ public class UserInfoController {
         resultDate.setData(responseMap);
 
         return resultDate;
-    }
+    }*/
 
 }

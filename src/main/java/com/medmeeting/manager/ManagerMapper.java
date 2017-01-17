@@ -17,4 +17,6 @@ public interface ManagerMapper {
 
     @Update("update user_info set user_pic=#{user_pic} where id=#{id}")
     int setProfilePicture(@Param("user_pic") String profilePicture, @Param("id") Integer id);
+
+
 }

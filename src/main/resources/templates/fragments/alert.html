@@ -191,6 +191,7 @@
         </div>
     </div>
 
+
     <div id="modal-authenUser" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -207,11 +208,12 @@
                     <!--如果是一般的娱乐、资讯、影视等等以观看为最终行为的软件或网站，那么用户所需要做出的判断就是一个低风险的即时判断，那么确定的判断就是概率最高的默认判断，确定在左，更便于用户快速处理。
                         如果是简历修改、用户信息修改、财务入账等需要做出谨慎处置的行为，那确定还是放在右侧更符合用户谨慎判断的需要。-->
                     <button type="button" data-dismiss="modal" class="btn btn-danger">取消</button>
-                    <button id="authenUserBtn" onclick="delFavorites()" type="button" class="btn btn-info">确定</button>
+                    <button id="authenUserBtn" onclick="authenUser1()" type="button" class="btn btn-info">确定</button>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="modal-delete-blog" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -235,5 +237,7 @@
     <input type="hidden" id="layoutConfigId" name="layoutConfigId"/>
 </div>
 </body>
+
+
 </html>
 

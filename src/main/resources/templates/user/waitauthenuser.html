@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr th:each="user:${waitAuthenUser}">
-            <td th:text="${user.id}" style='vertical-align: middle;text-align: center;'></td>
+            <td id="ha" th:text="${user.id}" style='vertical-align: middle;text-align: center;'></td>
             <td th:text="${user.name}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
             <td th:text="${user.nickName}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
             <td th:text="${user.company}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
@@ -42,16 +42,39 @@
                         </div>
                     </div>
                 </table>
-                <!--<img alt="" width="100px" height="100px" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/>-->
             </td>
             <td>
-                <!--<button id="authen" class="btn btn-block btn-primary mt-lg">认证</button>-->
-                <div class="p-lg text-center">
+                <!--<div class="p-lg text-center">
                     <a class="btn btn-default btn-block" data-target="#modal-authenUser" data-toggle="modal" href="#">
                         <strong>认证</strong>
                     </a>
+                </div>-->
+
+
+                    <!--thymeleaf+bootstrap，onclick传参实现模态框中遇到的错误-->
+                    <!--onclick调javascript函数时，不能直接使用onclick=“editUser(${prod.id})”，这样会报错，需要修改成如下的格式。
+                    <a href="#editModal" role="button" data-toggle="modal" th:onclick="'javascript:editUser('+${prod.id}+');'">修改</a>-->
+                <!--<div>
+                    <input type="hidden" name="user_id" th:id="${user.id}"  th:value="${user.id}" />
+                    <button th:onclick="'javascript:alert($(\'\#' + ${user.id} + '\').val());'"/>
+                    <button th:onclick="'javascript:alert(' + ${user.id} + ')'"/>
+                    <div th:text="${user.id}" type="button" th:onclick="'javascript:alert(document.getElementById(' + ${user.id} +').textContent)'"></div>
+                </div>-->
+
+
+                <div class="p-lg text-center">
+                    <a class="btn btn-default btn-block"  th:onclick="'javascript:authenUser(' + ${user.id} +')'">
+                        <strong>认证</strong>
+                    </a>
+                    <!--<a class="btn btn-default btn-block"  th:onclick="'javascript:loadWaitUsers(\'/user/authen/' + ${user.id} +'\')'">-->
+                        <!--<strong>认证</strong>-->
+                    <!--</a>-->
                 </div>
+
             </td>
+
+
+
         </tr>
         </tbody>
     </table>
@@ -60,7 +83,42 @@
 
 </body>
 <script type='text/javascript'>
+    function authenUser(id) {
+        $.ajax({
+            async: false,
+            type: 'PUT',
+            dataType: 'json',
+            data: "",
+            url: '/user/authen/' + id,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            },
+            success: function (response) {
+                // loadFavorites();
+                // if ("usercontent" == $("#userCheck").val()) {
+                //     userLocationUrl($("#forward").val(), "userAll");
+                //     loadUserFavorites();
+                // } else {
+                //     locationUrl($("#forward").val(), "home");
+                // }
+                // $('#modal-authenUser').modal('hide');
 
+                // alert("ok");
+
+                /*if(response.data.rspCode == '000000'){
+                    console.log(this.$router);
+                    locationUrl('/user2/list/wait')
+                } else {
+                    $("#errorMsg").html(response.data.rspMsg);
+                    $("#errorMsg").show(300).delay(3000).hide(300);
+                }*/
+
+                locationUrl('/user2/list/wait')
+            }
+        });
+    }
 </script>
 <style>
     .gallery {

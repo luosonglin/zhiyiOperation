@@ -1,19 +1,19 @@
 package com.medmeeting.web;
 
 import com.medmeeting.base.entity.ExceptionMsg;
+import com.medmeeting.base.entity.Response;
 import com.medmeeting.base.entity.ResponseData;
+import com.medmeeting.base.utils.DateUtils;
 import com.medmeeting.base.utils.FileUtil;
 import com.medmeeting.comm.Const;
 import com.medmeeting.manager.ManagerMapper;
 import com.medmeeting.manager.User;
+import com.medmeeting.repository.UserInfoMapper;
 import com.medmeeting.web.BaseController;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Decoder;
@@ -36,6 +36,9 @@ public class ManagerController extends BaseController {
 
     @Autowired
     private ManagerMapper managerMapper;
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
 
     @RequestMapping(value = "/login2", method = RequestMethod.POST)
     @ApiImplicitParam(name = "user", value = "详细实体user", required = true, dataType = "User")
@@ -72,7 +75,7 @@ public class ManagerController extends BaseController {
 
     /**
      * 上传头像
-     * @param file
+     * @param dataUrl
      * @return
      */
     @RequestMapping(value = "/uploadHeadPortrait", method = RequestMethod.POST)
@@ -103,5 +106,25 @@ public class ManagerController extends BaseController {
             return new ResponseData(ExceptionMsg.FAILED);
         }
     }
+
+    /**
+     * 认证医生
+     * @param id
+     * @return
+     */
+    @RequestMapping(value="/authen/{id}", method = RequestMethod.PUT)
+    @ApiImplicitParam(name = "id", value = "用户user_id", required = true, dataType = "int", paramType="path")
+    public Response delete(@PathVariable("id") Integer id) {
+
+        userInfoMapper.authorization(id);
+
+        return result();
+    }
+//    public String delete(@PathVariable("id") Integer id) {
+//
+//        userInfoMapper.authorization(id);
+//
+//        return "/user2/list/wait";
+//    }
 
 }
