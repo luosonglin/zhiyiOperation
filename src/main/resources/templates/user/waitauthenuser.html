@@ -8,37 +8,46 @@
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
-            <th>序号</th>
-            <th>用户名</th>
-            <th>昵称</th>
-            <th>公司/单位</th>
-            <th>部门/科室</th>
-            <th>职位</th>
-            <th>所在医院</th>
-            <th>邮箱</th>
-            <th>手机号</th>
+            <th style='vertical-align: middle;text-align: center;'>序号</th>
+            <th style='vertical-align: middle;text-align: center;'>用户名</th>
+            <th style='vertical-align: middle;text-align: center;'>昵称</th>
+            <th style='vertical-align: middle;text-align: center;'>公司/单位</th>
+            <th style='vertical-align: middle;text-align: center;'>部门/科室</th>
+            <th style='vertical-align: middle;text-align: center;'>职位</th>
+            <th style='vertical-align: middle;text-align: center;'>所在医院</th>
+            <th style='vertical-align: middle;text-align: center;'>邮箱</th>
+            <th style='vertical-align: middle;text-align: center;'>手机号</th>
             <!--<th>注册时间</th>-->
-            <th>头像</th>
-            <th>操作</th>
+            <th style='vertical-align: middle;text-align: center;'>头像</th>
+            <th style='vertical-align: middle;text-align: center;'>操作</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user:${waitAuthenUser}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.name}" style="white-space: nowrap"></td>
-            <td th:text="${user.nickName}" style="white-space: nowrap"></td>
-            <td th:text="${user.company}" style="white-space: nowrap"></td>
-            <td th:text="${user.department}" style="white-space: nowrap"></td>
-            <td th:text="${user.postion}" style="white-space: nowrap"></td>
-            <td th:text="${user.hospital}" style="white-space: nowrap"></td>
-            <td th:text="${user.email}" style="white-space: nowrap"></td>
-            <td th:text="${user.mobilePhone}" style="white-space: nowrap"></td>
+            <td th:text="${user.id}" style='vertical-align: middle;text-align: center;'></td>
+            <td th:text="${user.name}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.nickName}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.company}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.department}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.postion}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.hospital}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.email}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
+            <td th:text="${user.mobilePhone}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
             <!--<td th:text="${user.stateDate}" style="white-space: nowrap"></td>-->
-            <td><img alt="" width="100px" height="100px" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/></td>
+            <td>
+                <table>
+                    <div class="gallery cf">
+                        <div>
+                            <img style="width:100px;height:100px;" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/>
+                        </div>
+                    </div>
+                </table>
+                <!--<img alt="" width="100px" height="100px" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/>-->
+            </td>
             <td>
                 <!--<button id="authen" class="btn btn-block btn-primary mt-lg">认证</button>-->
                 <div class="p-lg text-center">
-                    <a class="btn btn-default btn-block" data-target="#modal-authen-user" data-toggle="modal" href="#">
+                    <a class="btn btn-default btn-block" data-target="#modal-authenUser" data-toggle="modal" href="#">
                         <strong>认证</strong>
                     </a>
                 </div>
@@ -51,37 +60,48 @@
 
 </body>
 <script type='text/javascript'>
-    $(function(){
-        toastr.options = {
-            'closeButton': true,
-            'positionClass': 'toast-top-center',
-            'timeOut': '5000',
-        };
-        $("#").click(function(){
-            var ok = $('#form').parsley().isValid({force: true});
-            if(ok){
-                $.ajax({
-                    async: false,
-                    type: 'POST',
-                    dataType: 'json',
-                    data:'name=' + $("#name").val(),
-                    url: '/favorites/add',
-                    error : function(XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    },
-                    success: function(response){
-                        if(response.rspCode == '000000'){
-                            loadFavorites();
-                            toastr.success('收藏夹创建成功！', '操作成功');
-                        }else{
-                            toastr.error(response.rspMsg, '操作失败');
-                        }
-                    }
-                });
-            }
-        });
-    });
+
 </script>
+<style>
+    .gallery {
+        width: 100px;
+        margin: 10px auto;
+        /*padding: 5px;*/
+        background: #333;
+    }
+
+    .gallery > div {
+        position: relative;
+        float: left;
+        padding: 1px;
+    }
+
+    .gallery > div > img {
+        width: 250px;
+        transition: .1s transform;
+        transform: translateZ(0);
+        /* hack */
+    }
+
+    .gallery > div:hover {
+        z-index: 1;
+    }
+
+    .gallery > div:hover > img {
+        transform: scale(3, 3);
+        transition: .1s transform;
+    }
+
+    .cf:before, .cf:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+
+</style>
 </html>

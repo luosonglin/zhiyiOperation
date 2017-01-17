@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <div id="modal-authen-user" class="modal fade">
+    <div id="modal-authenUser" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -204,13 +204,14 @@
                     <p>该用户信息是否真实可靠，确定认证？</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="delblog" type="button" class="btn btn-primary" onclick="delCollect()">确定</button>
+                    <!--如果是一般的娱乐、资讯、影视等等以观看为最终行为的软件或网站，那么用户所需要做出的判断就是一个低风险的即时判断，那么确定的判断就是概率最高的默认判断，确定在左，更便于用户快速处理。
+                        如果是简历修改、用户信息修改、财务入账等需要做出谨慎处置的行为，那确定还是放在右侧更符合用户谨慎判断的需要。-->
                     <button type="button" data-dismiss="modal" class="btn btn-danger">取消</button>
+                    <button id="authenUserBtn" onclick="delFavorites()" type="button" class="btn btn-info">确定</button>
                 </div>
             </div>
         </div>
     </div>
-
     <div id="modal-delete-blog" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -224,8 +225,8 @@
                     <p>该条微博将被永久删除，且无法找回，是否继续？</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="delblog" type="button" class="btn btn-primary" onclick="delCollect()">确定</button>
                     <button type="button" data-dismiss="modal" class="btn btn-danger">取消</button>
+                    <button id="delblog" type="button" class="btn btn-primary" onclick="delCollect()">确定</button>
                 </div>
             </div>
         </div>
