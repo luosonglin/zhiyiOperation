@@ -16,8 +16,12 @@ public enum ExceptionMsg {
     LoginNameNotExists("000107","该用户未注册"),
     UserNameSame("000108","新用户名与原用户名一致"),
 
+    UserIdIsNull("000109", "为防止外籍人员恶意操作，请重新登陆"),
+
     FavoritesNameIsNull("000200","名称不能为空"),
     FavoritesNameUsed("000201","已有同名标题的病例"),
+
+
 
     CollectExist("000300","该文章已被收藏"),
 

@@ -100,24 +100,28 @@ public class CaseOfIllnessController extends BaseController{
                 return result(ExceptionMsg.FavoritesNameUsed);
             }else{
                 try {
-                    CaseOfIllness caseOfIllness1 = new CaseOfIllness();
-                    caseOfIllness1.setTitle(title);
-                    caseOfIllness1.setUserId(getUserId());
-                    caseOfIllness1.setChiefComplain(chief_complain);
-                    caseOfIllness1.setChiefComplainImage(chief_complain_image);
-                    caseOfIllness1.setBodyCheck(body_check);
-                    caseOfIllness1.setBodyCheckImage(body_check_image);
-                    caseOfIllness1.setMedicalDiagnosis(medical_diagnosis);
-                    caseOfIllness1.setMedicalDiagnosisImage(medical_diagnosis_image);
-                    caseOfIllness1.setFollowUp(follow_up);
-                    caseOfIllness1.setFollowUpImage(follow_up_image);
-                    caseOfIllness1.setCreatedAt(new Date());
-                    caseOfIllness1.setCommentCount(0);
-                    caseOfIllness1.setLikeCount(0);
-                    caseOfIllness1.setIsHot(0);
+                    if (getUserId() == 0) {
+                        return result(ExceptionMsg.UserIdIsNull);
+                    } else {
+                        CaseOfIllness caseOfIllness1 = new CaseOfIllness();
+                        caseOfIllness1.setTitle(title);
+                        caseOfIllness1.setUserId(getUserId());
+                        caseOfIllness1.setChiefComplain(chief_complain);
+                        caseOfIllness1.setChiefComplainImage(chief_complain_image);
+                        caseOfIllness1.setBodyCheck(body_check);
+                        caseOfIllness1.setBodyCheckImage(body_check_image);
+                        caseOfIllness1.setMedicalDiagnosis(medical_diagnosis);
+                        caseOfIllness1.setMedicalDiagnosisImage(medical_diagnosis_image);
+                        caseOfIllness1.setFollowUp(follow_up);
+                        caseOfIllness1.setFollowUpImage(follow_up_image);
+                        caseOfIllness1.setCreatedAt(new Date());
+                        caseOfIllness1.setCommentCount(0);
+                        caseOfIllness1.setLikeCount(0);
+                        caseOfIllness1.setIsHot(0);
 
-                    caseMapper.insertByCase(caseOfIllness1);
-                    logger.info("haha");
+                        caseMapper.insertByCase(caseOfIllness1);
+                        logger.info("haha" + getUserId());
+                    }
 
                 } catch (Exception e) {
                     logger.error("异常：",e);
