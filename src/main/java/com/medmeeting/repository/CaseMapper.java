@@ -46,4 +46,13 @@ public interface CaseMapper {
 
     //依据blog_id来获取blog列表
     List<CaseOfIllness> getCaseListByCaseId(List<Integer> id);
+
+
+    @Select("select id, user_id from case_of_illness where title = #{title} ORDER BY created_at desc")
+    CaseOfIllness getCaseOfIllness(@Param("title") String title);
+
+
+    //#{}里面的字段必须跟**mapper的一样!!!!!!
+    @Insert("INSERT INTO case_of_illness(id, user_id, title, tag_id, chief_complain, chief_complain_image, body_check, body_check_image, medical_diagnosis, medical_diagnosis_image,follow_up, follow_up_image, comment_count, like_count, created_at, deleted_at,  is_hot) VALUES(#{id}, #{userId}, #{title}, #{tagId}, #{chiefComplain}, #{chiefComplainImage}, #{bodyCheck}, #{bodyCheckImage}, #{medicalDiagnosis}, #{medicalDiagnosisImage}, #{followUp}, #{followUpImage}, #{commentCount}, #{likeCount}, #{createdAt}, #{deletedAt}, #{isHot})")
+    int insertByCase(CaseOfIllness caseOfIllness);
 }

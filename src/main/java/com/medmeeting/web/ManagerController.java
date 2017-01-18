@@ -6,11 +6,14 @@ import com.medmeeting.base.entity.ResponseData;
 import com.medmeeting.base.utils.DateUtils;
 import com.medmeeting.base.utils.FileUtil;
 import com.medmeeting.comm.Const;
+import com.medmeeting.domain.CaseOfIllness;
 import com.medmeeting.manager.ManagerMapper;
 import com.medmeeting.manager.User;
+import com.medmeeting.repository.CaseMapper;
 import com.medmeeting.repository.UserInfoMapper;
 import com.medmeeting.web.BaseController;
 import io.swagger.annotations.ApiImplicitParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -126,5 +129,6 @@ public class ManagerController extends BaseController {
 //
 //        return "/user2/list/wait";
 //    }
+
 
 }

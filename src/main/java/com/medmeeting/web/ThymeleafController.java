@@ -1,8 +1,11 @@
 package com.medmeeting.web;
 
 import com.medmeeting.comm.Const;
+import com.medmeeting.domain.UserAndCase;
+import com.medmeeting.repository.CaseMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.Cookie;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by luosonglin on 09/01/2017.
@@ -102,6 +107,45 @@ public class ThymeleafController extends BaseController {
     public String mobile() {
         return "mobile";
     }
+
+    @Autowired
+    CaseMapper caseMapper;
+
+    @RequestMapping(value="/case/list")
+//    @LoggerManage(description="所有病例")
+    public String getBlogList(Model model) {
+
+        List<UserAndCase> cases = caseMapper.findAllCase();
+        for (UserAndCase aCase : cases) {
+            if (aCase.getChiefComplainImage() == null)
+                continue;
+            aCase.setChiefComplainImages(Arrays.asList(aCase.getChiefComplainImage().split(";")));
+
+            if (aCase.getBodyCheckImage() == null)
+                continue;
+            aCase.setBodyCheckImages(Arrays.asList(aCase.getBodyCheckImage().split(";")));
+
+            if (aCase.getMedicalDiagnosisImage() == null)
+                continue;
+            aCase.setMedicalDiagnosisImages(Arrays.asList(aCase.getMedicalDiagnosisImage().split(";")));
+
+            if (aCase.getFollowUpImage() == null)
+                continue;
+            aCase.setFollowUpImages(Arrays.asList(aCase.getFollowUpImage().split(";")));
+        }
+
+        model.addAttribute("case",cases);
+
+        return "caseOfIllness/caseOfIllness";
+    }
+
+
+    @RequestMapping(value="/case/newCase")
+//    @LoggerManage(description="新建病例页面")
+    public String newCase(){
+        return "caseOfIllness/newcaseofillness";
+    }
+
 
 
 
