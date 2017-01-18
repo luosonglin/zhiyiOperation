@@ -17,7 +17,7 @@ public enum ExceptionMsg {
     UserNameSame("000108","新用户名与原用户名一致"),
 
     FavoritesNameIsNull("000200","名称不能为空"),
-    FavoritesNameUsed("000201","名称已被创建"),
+    FavoritesNameUsed("000201","已有同名标题的病例"),
 
     CollectExist("000300","该文章已被收藏"),
 

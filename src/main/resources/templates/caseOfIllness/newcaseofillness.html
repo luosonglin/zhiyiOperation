@@ -8,7 +8,32 @@
             <div class="col-md-3">
                 <form id="form" data-parsley-validate="true" onsubmit="return false">
                     <div class="form-group">
-                        <input id="name" type="text" class="form-control" placeholder="标题" data-parsley-error-message="请输入标题" required="required"/>
+                        <input id="title" type="text" class="form-control" placeholder="标题" data-parsley-error-message="请输入标题" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="chief_complain" type="text" class="form-control" placeholder="主诉" data-parsley-error-message="请输入主诉" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="chief_complain_image" type="text" class="form-control" placeholder="主诉图片" data-parsley-error-message="请输入主诉图片" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="body_check" type="text" class="form-control" placeholder="查体" data-parsley-error-message="请输入查体" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="body_check_image" type="text" class="form-control" placeholder="查体图片" data-parsley-error-message="请输入查体图片" required="required"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="medical_diagnosis" type="text" class="form-control" placeholder="医疗诊断" data-parsley-error-message="请输入医疗诊断" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="medical_diagnosis_image" type="text" class="form-control" placeholder="医疗诊断图片" data-parsley-error-message="请输入医疗诊断图片" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="follow_up" type="text" class="form-control" placeholder="随访" data-parsley-error-message="请输入随访" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input id="follow_up_image" type="text" class="form-control" placeholder="随访图片" data-parsley-error-message="请输入随访图片" required="required"/>
                     </div>
                     <button id="addFavorites" class="btn btn-block btn-primary mt-lg">提交</button>
                 </form>
@@ -31,8 +56,8 @@
                     async: false,
                     type: 'POST',
                     dataType: 'json',
-                    data:'',//title=' + $("#name").val(),
-                    url: '/case/add/'+$("#name").val(),
+                    data:'',
+                    url: '/case/add/'+$("#title").val() +'/' +$("#chief_complain").val() +'/'+$("#chief_complain_image").val() +'/'+$("#body_check").val() +'/'+$("#body_check_image").val() +'/'+$("#medical_diagnosis").val() +'/'+$("#medical_diagnosis_image").val() +'/'+$("#follow_up").val() +'/'+$("#follow_up_image").val() ,
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest);
                         console.log(textStatus);
@@ -40,7 +65,6 @@
                     },
                     success: function(response){
                         if(response.rspCode == '000000'){
-                            loadFavorites();
                             toastr.success('收藏夹创建成功！', '操作成功');
                         }else{
                             toastr.error(response.rspMsg, '操作失败');
