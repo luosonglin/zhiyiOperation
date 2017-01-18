@@ -32,7 +32,7 @@
         <tbody>
         <tr th:each="case:${case}">
             <td class="text-center" th:text="${case.id}"></td>
-            <td th:text="${case.name == null ? case.nickName:case.name}"></td>
+            <td th:text="${case.name == null ? case.nickName:case.name}" style="vertical-align: middle;text-align: center;"></td>
             <td th:text="${case.title}" style="word-break: break-all"></td>
             <td th:text="${case.chiefComplain}" style="word-break: break-all"></td>
             <td>
@@ -76,9 +76,9 @@
             </td>
             <!--时间格式化-->
             <td th:text="${#calendars.format(case.createdAt,'yyyy/MM/dd HH:mm')}" style="white-space: nowrap"></td>
-            <td th:text="${case.commentCount}"></td>
-            <td th:text="${case.likeCount}"></td>
-            <td th:text="${case.isHot == 1? '是':'否'}"></td>
+            <td th:text="${case.commentCount}" style="vertical-align: middle;text-align: center;"></td>
+            <td th:text="${case.likeCount}" style="vertical-align: middle;text-align: center;"></td>
+            <td th:text="${case.isHot == 1? '是':'否'}" style="vertical-align: middle;text-align: center;"></td>
             <td>
                 <div class="p-lg text-center">
                     <a class="btn btn-default btn-block" data-target="#modal-delete-case" data-toggle="modal" href="#">

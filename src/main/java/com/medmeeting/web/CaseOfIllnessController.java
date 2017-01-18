@@ -26,9 +26,21 @@ public class CaseOfIllnessController {
 
         List<UserAndCase> cases = caseMapper.findAllCase();
         for (UserAndCase aCase : cases) {
+            if (aCase.getChiefComplainImage() == null)
+                continue;
+            aCase.setChiefComplainImages(Arrays.asList(aCase.getChiefComplainImage().split(";")));
+
             if (aCase.getBodyCheckImage() == null)
                 continue;
             aCase.setBodyCheckImages(Arrays.asList(aCase.getBodyCheckImage().split(";")));
+
+            if (aCase.getMedicalDiagnosisImage() == null)
+                continue;
+            aCase.setMedicalDiagnosisImages(Arrays.asList(aCase.getMedicalDiagnosisImage().split(";")));
+
+            if (aCase.getFollowUpImage() == null)
+                continue;
+            aCase.setFollowUpImages(Arrays.asList(aCase.getFollowUpImage().split(";")));
         }
 
         model.addAttribute("case",cases);
