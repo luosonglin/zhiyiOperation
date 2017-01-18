@@ -1,0 +1,145 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'">
+
+
+</head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>病例</h3>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th style='vertical-align: middle;text-align: center;'>序号</th>
+            <th style='vertical-align: middle;text-align: center;'>用户名(或昵称)</th>
+            <th style='vertical-align: middle;text-align: center;'>标题</th>
+            <th style='vertical-align: middle;text-align: center;'>主诉</th>
+            <th style='vertical-align: middle;text-align: center;'>主诉图片</th>
+            <th style='vertical-align: middle;text-align: center;'>查体</th>
+            <th style='vertical-align: middle;text-align: center;'>查体图片</th>
+            <th style='vertical-align: middle;text-align: center;'>医疗诊断</th>
+            <th style='vertical-align: middle;text-align: center;'>医疗诊断图片</th>
+            <th style='vertical-align: middle;text-align: center;'>随访</th>
+            <th style='vertical-align: middle;text-align: center;'>随访图片</th>
+            <th style='vertical-align: middle;text-align: center;'>发布时间</th>
+            <th style='vertical-align: middle;text-align: center;'>评论数</th>
+            <th style='vertical-align: middle;text-align: center;'>点赞数</th>
+            <th style='vertical-align: middle;text-align: center;'>是否热门</th>
+            <th style='vertical-align: middle;text-align: center;'>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="case:${case}">
+            <td class="text-center" th:text="${case.id}"></td>
+            <td th:text="${case.name == null ? case.nickName:case.name}"></td>
+            <td th:text="${case.title}" style="word-break: break-all"></td>
+            <td th:text="${case.chiefComplain}" style="word-break: break-all"></td>
+            <td>
+                <table>
+                    <div class="gallery cf" th:each="images, imageStatus:${case.chiefComplainImages}">
+                        <div>
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        </div>
+                    </div>
+                </table>
+            </td>
+            <td th:text="${case.bodyCheck}" style="word-break: break-all"></td>
+            <td>
+                <table>
+                    <div class="gallery cf" th:each="images, imageStatus:${case.bodyCheckImages}">
+                        <div>
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        </div>
+                    </div>
+                </table>
+            </td>
+            <td th:text="${case.medicalDiagnosis}" style="word-break: break-all"></td>
+            <td>
+                <table>
+                    <div class="gallery cf" th:each="images, imageStatus:${case.medicalDiagnosisImages}">
+                        <div>
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        </div>
+                    </div>
+                </table>
+            </td>
+            <td th:text="${case.followUp}" style="word-break: break-all"></td>
+            <td>
+                <table>
+                    <div class="gallery cf" th:each="images, imageStatus:${case.followUpImages}">
+                        <div>
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        </div>
+                    </div>
+                </table>
+            </td>
+            <!--时间格式化-->
+            <td th:text="${#calendars.format(case.createdAt,'yyyy/MM/dd HH:mm')}" style="white-space: nowrap"></td>
+            <td th:text="${case.commentCount}"></td>
+            <td th:text="${case.likeCount}"></td>
+            <td th:text="${case.isHot == 1? '是':'否'}"></td>
+            <td>
+                <div class="p-lg text-center">
+                    <a class="btn btn-default btn-block" data-target="#modal-delete-case" data-toggle="modal" href="#">
+                        <strong>删除</strong>
+                    </a>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</section>
+
+</body>
+<script type='text/javascript'>
+
+</script>
+<style>
+    .gallery {
+        width: 30px;
+        margin: 10px auto;
+        /*padding: 5px;*/
+        /*background: #333;*/
+    }
+
+    .gallery > div {
+        position: relative;
+        float: left;
+        padding: 1px;
+    }
+
+    .gallery > div > img {
+        width: 250px;
+        transition: .1s transform;
+        transform: translateZ(0);
+        /* hack */
+    }
+
+    .gallery > div:hover {
+        z-index: 1;
+    }
+
+    .gallery > div:hover > img {
+        transform: scale(15, 15);
+        transition: .3s transform;
+    }
+
+    .cf:before, .cf:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+
+</style>
+
+</html>

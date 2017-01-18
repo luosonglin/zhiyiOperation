@@ -44,11 +44,33 @@
                 </table>
             </td>
             <td>
-                <!--<div class="p-lg text-center">
+                <div class="p-lg text-center">
                     <a class="btn btn-default btn-block" data-target="#modal-authenUser" data-toggle="modal" href="#">
                         <strong>认证</strong>
                     </a>
-                </div>-->
+                </div>
+
+                <div id="modal-authenUser" class="modal fade" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" class="close">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">审核用户</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>该用户信息是否真实可靠，确定认证？</p>
+                            </div>
+                            <div class="modal-footer">
+                                <!--如果是一般的娱乐、资讯、影视等等以观看为最终行为的软件或网站，那么用户所需要做出的判断就是一个低风险的即时判断，那么确定的判断就是概率最高的默认判断，确定在左，更便于用户快速处理。
+                                    如果是简历修改、用户信息修改、财务入账等需要做出谨慎处置的行为，那确定还是放在右侧更符合用户谨慎判断的需要。-->
+                                <button type="button" data-dismiss="modal" class="btn btn-danger">取消</button>
+                                <button id="authenUserBtn"  th:onclick="'javascript:authenUser(' + ${user.id} +')'" type="button" class="btn btn-info">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                     <!--thymeleaf+bootstrap，onclick传参实现模态框中遇到的错误-->
@@ -62,14 +84,11 @@
                 </div>-->
 
 
-                <div class="p-lg text-center">
+               <!-- <div class="p-lg text-center">
                     <a class="btn btn-default btn-block"  th:onclick="'javascript:authenUser(' + ${user.id} +')'">
                         <strong>认证</strong>
                     </a>
-                    <!--<a class="btn btn-default btn-block"  th:onclick="'javascript:loadWaitUsers(\'/user/authen/' + ${user.id} +'\')'">-->
-                        <!--<strong>认证</strong>-->
-                    <!--</a>-->
-                </div>
+                </div>-->
 
             </td>
 
@@ -116,6 +135,7 @@
                 }*/
 
                 locationUrl('/user2/list/wait')
+                $("#errorMsg").html("认证成功").show(300).delay(3000).hide(300);
             }
         });
     }
