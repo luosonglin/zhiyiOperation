@@ -17,13 +17,16 @@
             <th style='vertical-align: middle;text-align: center;'>所在医院</th>
             <th style='vertical-align: middle;text-align: center;'>邮箱</th>
             <th style='vertical-align: middle;text-align: center;'>手机号</th>
-            <!--<th>注册时间</th>-->
             <th style='vertical-align: middle;text-align: center;'>头像</th>
+            <th style="vertical-align: middle;text-align: center;">类型</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user:${user}">
-            <td th:text="${user.id}" style='vertical-align: middle;text-align: center;'></td>
+            <td style='vertical-align: middle;text-align: center;white-space: nowrap;'>
+                <span th:text="${user.id}"></span>
+                <span th:text="${user.authenStatus == 'A'? 'V' :''}" style="color: #f49a07;font-style: oblique;"></span>
+            </td>
             <td th:text="${user.name}" style="white-space: nowrap"></td>
             <td th:text="${user.nickName}" style="white-space: nowrap"></td>
             <td th:text="${user.company}" style="white-space: nowrap"></td>
@@ -32,8 +35,14 @@
             <td th:text="${user.hospital}" style="white-space: nowrap"></td>
             <td th:text="${user.email}" style="white-space: nowrap"></td>
             <td th:text="${user.mobilePhone}" style="white-space: nowrap"></td>
-            <!--<td th:text="${user.stateDate}" style="white-space: nowrap"></td>-->
             <td><img alt="" width="100px" height="100px" class="img-thumbnail" th:src="${user.userPic == null || user.userPic == 'defaultPic' ?'img/logo.png':user.userPic}"/></td>
+            <td>
+                <div th:switch="${user.authenStatus}" th:remove="tag">
+                    <p th:case="A"><span class="yellow">已认证</span></p>
+                    <p th:case="B"><span class="green">待认证</span></p>
+                    <p th:case="X"><span class="red">未认证</span></p>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>

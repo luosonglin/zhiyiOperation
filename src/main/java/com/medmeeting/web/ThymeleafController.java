@@ -51,6 +51,19 @@ public class ThymeleafController extends BaseController {
         return "home";
     }
 
+    @RequestMapping(value="/indexpage")
+//    @LoggerManage(description="首页")
+    public String indexPage(Model model) {
+        model.addAttribute("user", getUser());
+        return "indexpage";
+    }
+
+    @RequestMapping(value="/author",method=RequestMethod.GET)
+//    @LoggerManage(description="作者页面")
+    public String watchAuthor() {
+        return "author";
+    }
+
     @RequestMapping(value="/login",method=RequestMethod.GET)
 //    @LoggerManage(description="登陆页面")
     public String login() {
