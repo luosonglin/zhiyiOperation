@@ -23,7 +23,10 @@
         </thead>
         <tbody>
         <tr th:each="user:${authenUser}">
-            <td th:text="${user.id}" style="vertical-align: middle;text-align: center;"></td>
+            <td style='vertical-align: middle;text-align: center;white-space: nowrap;'>
+                <span th:text="${user.id}"></span>
+                <span style="color: #f49a07;font-style: oblique;">V</span>
+            </td>
             <td th:text="${user.name}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
             <td th:text="${user.nickName}" style="vertical-align: middle;text-align: center;white-space: nowrap"></td>
             <td th:text="${user.company}" style="white-space: nowrap"></td>
