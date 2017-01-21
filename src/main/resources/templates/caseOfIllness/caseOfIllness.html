@@ -38,8 +38,8 @@
             <td>
                 <table>
                     <div class="gallery cf" th:each="images, imageStatus:${case.chiefComplainImages}">
-                        <div>
-                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        <div th:if="${not #strings.isEmpty(case.chiefComplainImage)}">
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                         </div>
                     </div>
                 </table>
@@ -48,8 +48,8 @@
             <td>
                 <table>
                     <div class="gallery cf" th:each="images, imageStatus:${case.bodyCheckImages}">
-                        <div>
-                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        <div th:if="${not #strings.isEmpty(case.bodyCheckImage)}">
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                         </div>
                     </div>
                 </table>
@@ -58,8 +58,8 @@
             <td>
                 <table>
                     <div class="gallery cf" th:each="images, imageStatus:${case.medicalDiagnosisImages}">
-                        <div>
-                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
+                        <div th:if="${not #strings.isEmpty(case.medicalDiagnosisImage)}">
+                            <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'':images}"/>
                         </div>
                     </div>
                 </table>
@@ -68,7 +68,7 @@
             <td>
                 <table>
                     <div class="gallery cf" th:each="images, imageStatus:${case.followUpImages}">
-                        <div>
+                        <div th:if="${not #strings.isEmpty(case.followUpImage)}">
                             <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>
                         </div>
                     </div>
