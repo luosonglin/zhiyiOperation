@@ -40,13 +40,12 @@
                 <table class="table table-hover">
                     <tr>
                         <td style="color: #136387; font-style: italic;font-weight:bold;">主诉</td>
-                        <td th:text="${case.chiefComplain}"></td>
-                    </tr>
-                    <tr th:if="${not #strings.isEmpty(case.chiefComplainImage)}">
-                        <td style="color: #136387; font-style: italic;font-weight:bold;">主诉图片</td>
                         <td>
                             <table>
-                                <div class="gallery cf" th:each="images, imageStatus:${case.chiefComplainImages}">
+                                <div>
+                                    <span th:text="${case.chiefComplain}"></span>
+                                </div>
+                                <div th:if="${not #strings.isEmpty(case.chiefComplainImage)}" class="gallery cf" th:each="images, imageStatus:${case.chiefComplainImages}" style=" width:60px; height:30px; border:0px solid #FF6699; float:left">
                                     <div>
                                         <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                                     </div>
@@ -57,13 +56,12 @@
 
                     <tr>
                         <td style="color: #136387; font-style: italic;font-weight:bold;">查体</td>
-                        <td th:text="${case.bodyCheck}"></td>
-                    </tr>
-                    <tr th:if="${not #strings.isEmpty(case.bodyCheckImage)}">
-                        <td style="color: #136387; font-style: italic;font-weight:bold;">查体图片</td>
                         <td>
                             <table>
-                                <div class="gallery cf" th:each="images, imageStatus:${case.bodyCheckImages}" style=" width:60px; height:30px; border:0px solid #FF6699; float:left">
+                                <div>
+                                    <span th:text="${case.bodyCheck}"></span>
+                                </div>
+                                <div th:if="${not #strings.isEmpty(case.bodyCheckImage)}" class="gallery cf" th:each="images, imageStatus:${case.bodyCheckImages}" style=" width:60px; height:30px; border:0px solid #FF6699; float:left">
                                     <div>
                                         <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                                     </div>
@@ -71,16 +69,16 @@
                             </table>
                         </td>
                     </tr>
+
 
                     <tr>
                         <td style="color: #136387; font-style: italic;font-weight:bold;">医疗诊断</td>
-                        <td th:text="${case.medicalDiagnosis}"></td>
-                    </tr>
-                    <tr th:if="${not #strings.isEmpty(case.medicalDiagnosisImage)}">
-                        <td style="color: #136387; font-style: italic;font-weight:bold;">医疗诊断图片</td>
                         <td>
                             <table>
-                                <div class="gallery cf" th:each="images, imageStatus:${case.medicalDiagnosisImages}">
+                                <div>
+                                    <span th:text="${case.medicalDiagnosis}"></span>
+                                </div>
+                                <div th:if="${not #strings.isEmpty(case.medicalDiagnosisImage)}" class="gallery cf" th:each="images, imageStatus:${case.medicalDiagnosisImages}" style=" width:60px; height:30px; border:0px solid #FF6699; float:left">
                                     <div>
                                         <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                                     </div>
@@ -88,16 +86,16 @@
                             </table>
                         </td>
                     </tr>
+
 
                     <tr>
                         <td style="color: #136387; font-style: italic;font-weight:bold;">随访</td>
-                        <td th:text="${case.followUp}"></td>
-                    </tr>
-                    <tr th:if="${not #strings.isEmpty(case.followUpImage)}">
-                        <td style="color: #136387; font-style: italic;font-weight:bold;">随访图片</td>
                         <td>
                             <table>
-                                <div class="gallery cf" th:each="images, imageStatus:${case.followUpImages}">
+                                <div>
+                                    <span th:text="${case.followUp}"></span>
+                                </div>
+                                <div th:if="${not #strings.isEmpty(case.followUpImage)}" class="gallery cf" th:each="images, imageStatus:${case.followUpImages}" style=" width:60px; height:30px; border:0px solid #FF6699; float:left">
                                     <div>
                                         <img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images}"/>
                                     </div>
@@ -105,7 +103,6 @@
                             </table>
                         </td>
                     </tr>
-
 
                 </table>
             </td>
