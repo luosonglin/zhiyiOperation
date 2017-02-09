@@ -15,19 +15,26 @@
             <th style='vertical-align: middle;text-align: center;'>名称</th>
             <th style='vertical-align: middle;text-align: center;'>时间</th>
             <th style='vertical-align: middle;text-align: center;'>地点</th>
-            <th style='vertical-align: middle;'>联系人</th>
             <th style='vertical-align: middle;'>状态</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="event:${event}">
+        <tr th:each="event:${event}"
+            style="cursor:hand;">
             <td class="text-center" th:text="${event.id}" style="width: 48px;"></td>
-            <td th:text="${event.title}" style="width: 300px; word-break: break-all; "></td>
-            <td th:text="${#calendars.format(event.startDate,'yy/MM/dd') + ' ~ ' + #calendars.format(event.endDate,'yy/MM/dd')}"  style="width: 146px; word-break: break-all"></td>
-            <td th:text="${event.address}" style="width: 300px; word-break: break-all"></td>
-            <td th:text="${event.contact}" style="width: 80px; word-break: break-all"></td>
+
+            <td th:text="${(event.title).length() > 8 ? (event.title).substring(0,8)+'...' : event.title}"
+                th:onclick="'javascript:locationUrl(\'' + '/event/' + ${event.id} +'\')'"
+                style="width: 300px; word-break: break-all; text-align: center;" ></td>
+
+            <td th:text="${#calendars.format(event.startDate,'yy/MM/dd') + ' ~ ' + #calendars.format(event.endDate,'yy/MM/dd')}"
+                style="width: 146px; word-break: break-all"></td>
+
+            <td th:text="${(event.address).length() > 20 ? (event.address).substring(0,20)+'...' : event.address}" style="width: 300px; word-break: break-all"></td>
+
             <td style="width: 60px; word-break: break-all">
-                <div th:switch="${event.status}">
+                <div th:if="${not #strings.isEmpty(event.status)}"
+                     th:switch="${event.status}">
                     <p th:case="'A'">待审核</p>
                     <p th:case="'B'">已审核</p>
                     <p th:case="'C'">已关闭</p>
