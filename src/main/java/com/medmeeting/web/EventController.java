@@ -21,7 +21,31 @@ public class EventController {
 
     @RequestMapping(value = "/allevent")
     public String getAllEventList(Model model){
-        List<Event> events = eventMapper.findAllEvent();
+        List<Event> events = eventMapper.getAllEventList();
+
+        model.addAttribute("event", events);
+        return "event/event";
+    }
+
+    @RequestMapping(value = "/hotevent")
+    public String getHotEventList(Model model){
+        List<Event> events = eventMapper.getHotEventList();
+
+        model.addAttribute("event", events);
+        return "event/event";
+    }
+
+    @RequestMapping(value = "/latestevent")
+    public String getLatestEventList(Model model){
+        List<Event> events = eventMapper.getLatestEventList();
+
+        model.addAttribute("event", events);
+        return "event/event";
+    }
+
+    @RequestMapping(value = "/recommendevent")
+    public String getRecommendEventList(Model model){
+        List<Event> events = eventMapper.getRecommendEventList();
 
         model.addAttribute("event", events);
         return "event/event";
