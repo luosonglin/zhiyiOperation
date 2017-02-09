@@ -4,70 +4,112 @@
 <section>
     <div class="content-wrapper">
         <h3>新建病例</h3>
-        <div class="row">
-            <div class="col-md-3">
-                <form id="form" data-parsley-validate="true" onsubmit="return false">
-                    <div class="form-group">
-                        <input id="title" type="text" class="form-control" placeholder="标题" data-parsley-error-message="请输入标题" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="chief_complain" type="text" class="form-control" placeholder="主诉" data-parsley-error-message="请输入主诉" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="chief_complain_image" type="text" class="form-control" placeholder="主诉图片" data-parsley-error-message="请输入主诉图片" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="body_check" type="text" class="form-control" placeholder="查体" data-parsley-error-message="请输入查体" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="body_check_image" type="text" class="form-control" placeholder="查体图片" data-parsley-error-message="请输入查体图片" required="required"/>
-                    </div>
 
-                    <div class="form-group">
-                        <input id="medical_diagnosis" type="text" class="form-control" placeholder="医疗诊断" data-parsley-error-message="请输入医疗诊断" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="medical_diagnosis_image" type="text" class="form-control" placeholder="医疗诊断图片" data-parsley-error-message="请输入医疗诊断图片" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="follow_up" type="text" class="form-control" placeholder="随访" data-parsley-error-message="请输入随访" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input id="follow_up_image" type="text" class="form-control" placeholder="随访图片" data-parsley-error-message="请输入随访图片" required="required"/>
-                    </div>
-                    <button id="addFavorites" class="btn btn-block btn-primary mt-lg">提交</button>
-                </form>
+        <form id="form" data-parsley-validate="true" onsubmit="return false" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title"><span style="color: #ea3a45;">* </span>标题:</label>
+                <div class="col-sm-8">
+                    <input id="title" type="text" class="form-control" placeholder="标题"
+                           data-parsley-error-message="请输入标题" required="required"/>
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="chief_complain"><span style="color: #ea3a45;">* </span>主诉:</label>
+                <div class="col-sm-8">
+                    <input id="chief_complain" type="text" class="form-control" placeholder="主诉"
+                           data-parsley-error-message="请输入主诉" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="chief_complain_image">主诉图片:</label>
+                <div class="col-sm-8">
+                    <input id="chief_complain_image" type="text" class="form-control" placeholder="主诉图片"
+                           data-parsley-error-message="请输入主诉图片" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="body_check"><span style="color: #ea3a45;">* </span>查体:</label>
+                <div class="col-sm-8">
+                    <input id="body_check" type="text" class="form-control" placeholder="查体"
+                           data-parsley-error-message="请输入查体" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="body_check_image">查体图片:</label>
+                <div class="col-sm-8">
+                    <input id="body_check_image" type="text" class="form-control" placeholder="查体图片"
+                           data-parsley-error-message="请输入查体图片" required="required"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="medical_diagnosis">医疗诊断:</label>
+                <div class="col-sm-8">
+                    <input id="medical_diagnosis" type="text" class="form-control" placeholder="医疗诊断"
+                           data-parsley-error-message="请输入医疗诊断" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="medical_diagnosis_image">医疗诊断图片:</label>
+                <div class="col-sm-8">
+                    <input id="medical_diagnosis_image" type="text" class="form-control" placeholder="医疗诊断图片"
+                           data-parsley-error-message="请输入医疗诊断图片" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="follow_up"><span style="color: #ea3a45;">* </span>随访:</label>
+                <div class="col-sm-8">
+                    <input id="follow_up" type="text" class="form-control" placeholder="随访"
+                           data-parsley-error-message="请输入随访" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="follow_up_image"><span style="color: #ea3a45;">* </span>随访图片:</label>
+                <div class="col-sm-8">
+                    <input id="follow_up_image" type="text" class="form-control" placeholder="随访图片"
+                           data-parsley-error-message="请输入随访图片" required="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-2">
+                    <button id="addFavorites" class="btn btn-block btn-primary mt-lg btn-lg">提交</button>
+                </div>
+            </div>
+        </form>
+
+
     </div>
 </section>
 </body>
 <script type='text/javascript'>
-    $(function(){
+    $(function () {
         toastr.options = {
             'closeButton': true,
             'positionClass': 'toast-top-center',
             'timeOut': '5000',
         };
-        $("#addFavorites").click(function(){
+        $("#addFavorites").click(function () {
             var ok = $('#form').parsley().isValid({force: true});
-            if(ok){
+            if (ok) {
                 $.ajax({
                     async: false,
                     type: 'POST',
                     dataType: 'json',
-                    data:'',
-                    url: '/case/add/'+$("#title").val() +'/' +$("#chief_complain").val() +'/'+$("#chief_complain_image").val() +'/'+$("#body_check").val() +'/'+$("#body_check_image").val() +'/'+$("#medical_diagnosis").val() +'/'+$("#medical_diagnosis_image").val() +'/'+$("#follow_up").val() +'/'+$("#follow_up_image").val() ,
-                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                    data: '',
+                    url: '/case/add/' + $("#title").val() + '/' + $("#chief_complain").val() + '/' + $("#chief_complain_image").val() + '/' + $("#body_check").val() + '/' + $("#body_check_image").val() + '/' + $("#medical_diagnosis").val() + '/' + $("#medical_diagnosis_image").val() + '/' + $("#follow_up").val() + '/' + $("#follow_up_image").val(),
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest);
                         console.log(textStatus);
                         console.log(errorThrown);
                     },
-                    success: function(response){
-                        if(response.rspCode == '000000'){
+                    success: function (response) {
+                        if (response.rspCode == '000000') {
                             locationUrl('/case/list');
                             toastr.success('新病例创建成功！', '操作成功');
-                        }else{
+                        } else {
                             toastr.error(response.rspMsg, '操作失败');
                         }
                     }
