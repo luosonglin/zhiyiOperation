@@ -15,50 +15,31 @@
             <th style='vertical-align: middle;text-align: center;'>名称</th>
             <th style='vertical-align: middle;text-align: center;'>时间</th>
             <th style='vertical-align: middle;text-align: center;'>地点</th>
-            <th style='vertical-align: middle;text-align: center;'>联系人</th>
-            <th style='vertical-align: middle;text-align: center;'>状态</th>
+            <th style='vertical-align: middle;'>联系人</th>
+            <th style='vertical-align: middle;'>状态</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="event:${event}">
-            <td class="text-center" th:text="${event.id}"></td>
-            <td th:text="${event.title}" style="word-break: break-all"></td>
-            <td th:text="${#calendars.format(event.startDate,'yy/MM/dd')} - ${#calendars.format(event.endDate,'yy/MM/dd')}" style="word-break: break-all"></td>
-            <td th:text="${event.address}" style="word-break: break-all"></td>
-            <td th:text="${event.status}" style="word-break: break-all"></td>
-            <!--<td>-->
-                <!--<table>-->
-                    <!--<div class="gallery cf" th:each="images, imageStatus:${blog.blogImages}">-->
-                        <!--<div>-->
-                            <!--<img style="width:30px;height:30px;" class="img-thumbnail" th:src="${images == null?'img/logo.jpg':images}"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</table>-->
-            <!--</td>-->
-            <!--&lt;!&ndash;时间格式化&ndash;&gt;-->
-            <!--<td th:text="${#calendars.format(blog.createdAt,'yyyy/MM/dd HH:mm')}" style="white-space: nowrap"></td>-->
-            <!--<td th:text="${blog.commentCount}"></td>-->
-            <!--<td th:text="${blog.likeCount}"></td>-->
-            <!--<td th:text="${blog.isHot == 1? '是':'否'}"></td>-->
-            <!--<td>-->
-                <!--<div class="p-lg text-center">-->
-                    <!--<a class="btn btn-default btn-block" data-target="#modal-delete-blog" data-toggle="modal" href="#">-->
-                        <!--<strong>删除</strong>-->
-                    <!--</a>-->
-                <!--</div>-->
-            <!--</td>-->
-
+            <td class="text-center" th:text="${event.id}" style="width: 48px;"></td>
+            <td th:text="${event.title}" style="width: 300px; word-break: break-all; "></td>
+            <td th:text="${#calendars.format(event.startDate,'yy/MM/dd') + ' ~ ' + #calendars.format(event.endDate,'yy/MM/dd')}"  style="width: 146px; word-break: break-all"></td>
+            <td th:text="${event.address}" style="width: 300px; word-break: break-all"></td>
+            <td th:text="${event.contact}" style="width: 80px; word-break: break-all"></td>
+            <td style="width: 60px; word-break: break-all">
+                <div th:switch="${event.status}">
+                    <p th:case="'A'">待审核</p>
+                    <p th:case="'B'">已审核</p>
+                    <p th:case="'C'">已关闭</p>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
-
-
-
 </section>
 
 </body>
 <script type='text/javascript'>
-
 </script>
 <style>
     .gallery {
