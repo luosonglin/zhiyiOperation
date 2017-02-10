@@ -1,12 +1,15 @@
 package com.medmeeting.web;
 
+import com.medmeeting.base.entity.Response;
 import com.medmeeting.domain.Event;
 import com.medmeeting.repository.EventMapper;
+import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -15,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/event")
-public class EventController {
+public class EventController extends BaseController {
 
     @Autowired
     private EventMapper eventMapper;
@@ -59,6 +62,19 @@ public class EventController {
         model.addAttribute("event", event);
 
         return "event/eventdetail";
+    }
 
+    /**
+     * 审核会议
+     * @param id
+     * @return
+     */
+    @RequestMapping(value="/verify/{id}", method = RequestMethod.PUT)
+    @ApiImplicitParam(name = "id", value = "用户event_id", required = true, dataType = "int", paramType="path")
+    public Response delete(@PathVariable("id") Integer id) {
+
+        eventMapper.verify(id);
+
+        return result();
     }
 }

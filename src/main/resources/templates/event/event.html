@@ -35,9 +35,9 @@
             <td style="width: 60px; word-break: break-all">
                 <div th:if="${not #strings.isEmpty(event.status)}"
                      th:switch="${event.status}">
-                    <p th:case="'A'">待审核</p>
-                    <p th:case="'B'">已审核</p>
-                    <p th:case="'C'">已关闭</p>
+                    <p th:case="'A'" style="color: #20a6e2;">待审核</p>
+                    <p th:case="'B'" style="color: #000;">已审核</p>
+                    <p th:case="'C'" style="color: #f96413;">已关闭</p>
                 </div>
             </td>
         </tr>

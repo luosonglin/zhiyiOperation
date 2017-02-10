@@ -4,6 +4,7 @@ import com.medmeeting.domain.Event;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -31,4 +32,8 @@ public interface EventMapper {
     //为什么用*， 懒
     @Select("SELECT * FROM event where id = #{event_id}")
     Event getEventInfo(@Param("event_id") Integer event_id);
+
+    //审核会议通过操作
+    @Update("UPDATE event SET status='B' WHERE id =#{event_id}")
+    void verify(@Param("event_id") Integer event_id);
 }
