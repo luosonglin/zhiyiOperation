@@ -2,6 +2,7 @@ package com.medmeeting.repository;
 
 import com.medmeeting.domain.Event;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -26,4 +27,8 @@ public interface EventMapper {
 
     @Select("SELECT id, title, start_date, end_date, address, status FROM event where groom = 'true' order by id DESC")
     List<Event> getRecommendEventList();
+
+    //为什么用*， 懒
+    @Select("SELECT * FROM event where id = #{event_id}")
+    Event getEventInfo(@Param("event_id") Integer event_id);
 }

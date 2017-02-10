@@ -5,6 +5,7 @@ import com.medmeeting.repository.EventMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -49,5 +50,15 @@ public class EventController {
 
         model.addAttribute("event", events);
         return "event/event";
+    }
+
+    @RequestMapping(value = "/{eventId}")
+    public String getEventInfo(Model model, @PathVariable Integer eventId){
+
+        Event event = eventMapper.getEventInfo(eventId);
+        model.addAttribute("event", event);
+
+        return "event/eventdetail";
+
     }
 }
