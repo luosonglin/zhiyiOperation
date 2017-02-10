@@ -4,12 +4,12 @@
 <section>
     <div class="content-wrapper">
         <h3 th:text="${event.title}"></h3>
-        <div th:if="${not #strings.isEmpty(event.status)}"
-             th:switch="${event.status}">
-            <p th:case="'A'" style="color: #20a6e2;">会议状态:待审核</p>
-            <p th:case="'B'" style="color: #000;">会议状态:已审核</p>
-            <p th:case="'C'" style="color: #f96413;">会议状态:已关闭</p>
-        </div>
+        <h4 th:if="${not #strings.isEmpty(event.status)}"
+            th:switch="${event.status}">
+            <p th:case="'A'" style="color: #20a6e2; float:right; margin-right:66px">待审核</p>
+            <p th:case="'B'" style="color: #000; float:right; margin-right:66px">已审核</p>
+            <p th:case="'C'" style="color: #f96413; float:right; margin-right:66px">已关闭</p>
+        </h4>
 
         <form id="form" data-parsley-validate="true" class="form-horizontal">
             <div class="form-group">
@@ -139,8 +139,6 @@
                 </div>
             </div>
         </form>
-
-
     </div>
 </section>
 </body>
